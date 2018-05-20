@@ -4,8 +4,8 @@ var possibleWords = ["Saturn", "Jupiter", "Dark Matter", "Supernova", "Black Hol
 
 //initialize variables
 
-var letterFormat = "visible";
 var wins=0;
+var lettersguessed = ["+"];
 var tries=0;
 var correctLetters=0;
 var left = 10 - tries;
@@ -43,6 +43,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
   
     function parseLetters(randomWord) {
+      //delete all of it and recreate with updated format
+      document.querySelector("#word").innerHTML = " ";
 
       for (y=0; y<randomWord.length ; y++){
      //  console.log("iteration number " + y);
@@ -65,28 +67,26 @@ document.addEventListener("DOMContentLoaded", function(){
                  setDiv.setAttribute("class", "spacebar")
                  correctLetters++; 
                   }
-               else if (currentPressedLetter === currentLetter.toLowerCase()) {
-                correctLetters++; 
-                updateScore();
-                console.log(correctLetters);
-                console.log("take action"); 
-                 setDiv.setAttribute("class", "visible");  
-                 console.log(setDiv); 
-                //  document.getElementById.populateThis.setAttribute("class", "visible");;
-                 targetDiv.appendChild(setDiv);
+              //  else if (currentPressedLetter === currentLetter.toLowerCase() )    {
+                 for (i=0; i<lettersguessed.length; i++) {
+                   console.log("length of letters guessed array is " + lettersguessed.length);
+                   if (currentLetter.toLowerCase() === lettersguessed[i]) {
+                    setDiv.setAttribute("class", "visible"); 
+                    i= lettersguessed.length;
                }
                else setDiv.setAttribute("class", "invisible1");
-               if (tries === 0) {
                targetDiv.appendChild(setDiv);
-               }
-               
     }
-   }
+   }}
 
 
 document.onkeyup = function(event) {
   readme = event.key.toLowerCase();
     currentPressedLetter = readme;
+    lettersguessed.push(readme);
+    // console.log("letter guessed first " + lettersguessed[0]);
+    // console.log("frst two letter guessed " + lettersguessed[0] + lettersguessed[1]);
+    // console.log("first three letter guessed "  + lettersguessed[0] + lettersguessed[1] + lettersguessed[2]);
     tries = tries+1;
     console.log(left);
     console.log("tries so far" + tries);
@@ -101,6 +101,7 @@ document.onkeyup = function(event) {
       if (correctLetters === randomWord.length) {
         wins++;
         tries=0;
+        var lettersguessed = [];
         correctLetters=0;
         left = 10 - tries;
         randomWord = possibleWords[Math.floor(Math.random() * possibleWords.length)];
