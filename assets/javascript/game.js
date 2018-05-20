@@ -67,17 +67,21 @@ document.addEventListener("DOMContentLoaded", function(){
                  setDiv.setAttribute("class", "spacebar")
                  correctLetters++; 
                   }
-              //  else if (currentPressedLetter === currentLetter.toLowerCase() )    {
+               else {
                  for (i=0; i<lettersguessed.length; i++) {
                    console.log("length of letters guessed array is " + lettersguessed.length);
                    if (currentLetter.toLowerCase() === lettersguessed[i]) {
                     setDiv.setAttribute("class", "visible"); 
                     i= lettersguessed.length;
+                    tries=tries-1;
+                    updateScore();
                }
                else setDiv.setAttribute("class", "invisible1");
+              }}
                targetDiv.appendChild(setDiv);
+     }
     }
-   }}
+
 
 
 document.onkeyup = function(event) {
