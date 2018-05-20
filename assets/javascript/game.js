@@ -8,7 +8,6 @@ var wins=0;
 var lettersguessed = ["+"];
 var tries=0;
 var correctLetters=0;
-var left = 10 - tries;
 randomWord = possibleWords[Math.floor(Math.random() * possibleWords.length)];
 var currentPressedLetter = " ";
 
@@ -45,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function(){
     function parseLetters(randomWord) {
       //delete all of it and recreate with updated format
       document.querySelector("#word").innerHTML = " ";
+      correctLetters=0;
 
       for (y=0; y<randomWord.length ; y++){
      //  console.log("iteration number " + y);
@@ -72,13 +72,14 @@ document.addEventListener("DOMContentLoaded", function(){
                    console.log("length of letters guessed array is " + lettersguessed.length);
                    if (currentLetter.toLowerCase() === lettersguessed[i]) {
                     setDiv.setAttribute("class", "visible"); 
+                    correctLetters++; 
                     i= lettersguessed.length;
-                    tries=tries-1;
-                    updateScore();
+                   
                }
                else setDiv.setAttribute("class", "invisible1");
               }}
                targetDiv.appendChild(setDiv);
+               updateScore();
      }
     }
 
@@ -92,7 +93,6 @@ document.onkeyup = function(event) {
     // console.log("frst two letter guessed " + lettersguessed[0] + lettersguessed[1]);
     // console.log("first three letter guessed "  + lettersguessed[0] + lettersguessed[1] + lettersguessed[2]);
     tries = tries+1;
-    console.log(left);
     console.log("tries so far" + tries);
     console.log(currentPressedLetter);
     parseLetters(randomWord);
@@ -104,14 +104,14 @@ document.onkeyup = function(event) {
     function updateScore() {
       if (correctLetters === randomWord.length) {
         wins++;
+        // document.querySelector("#word").innerHTML = "";
         tries=0;
-        var lettersguessed = [];
+        lettersguessed.length = 0;
+        lettersguessed[0] ="+";
         correctLetters=0;
-        left = 10 - tries;
         randomWord = possibleWords[Math.floor(Math.random() * possibleWords.length)];
         console.log("Current randomWord is " + randomWord);
-        currentPressedLetter = " ";
-        document.querySelector("#word").innerHTML = " ";
+        currentPressedLetter = "";
         parseLetters(randomWord);
       }
 
