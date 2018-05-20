@@ -1,0 +1,63 @@
+.visible{
+    font-size: 60px;
+    width: 50px;
+    height: 72px;
+    text-align: center;
+    font-weight: bolder;
+    color:yellow;
+    border-bottom: 1px;
+    border-bottom: yellow;
+    border-bottom-style: solid;
+    margin-right: 6px;
+}
+
+.invisible1{
+    font-size: 1px;
+    width: 50px;
+    height: 72px;
+    text-align: center;
+    font-weight: bolder;
+    color: black;
+    border-bottom: 1px;
+    border-bottom: yellow;
+    border-bottom-style: solid;
+    margin-right: 6px;
+}
+
+.spacebar {
+    opacity: 0;
+    width: 50px;
+    height: 72px;
+    border-bottom: 1px;
+}
+
+    
+    .title1{
+        padding-top: 10px ;
+        text-align: center;
+         color:yellow; 
+         font-weight:bolder;
+         -webkit-transform: rotateX(50deg);
+        -moz-transform: rotateX(50deg);
+        transform: rotateX(50deg); 
+        font-family: 'Pathway Gothic One', sans-serif;
+    }
+
+.whitetext1{
+    text-align: center;
+     color:white; 
+     -webkit-transform: rotateX(50deg);
+    -moz-transform: rotateX(50deg);
+    transform: rotateX(50deg); 
+    font-family: 'Pathway Gothic One', sans-serif;
+}
+
+.whitetext2{
+    text-align: center;
+     color:white; 
+     -webkit-transform: rotateX(50deg);
+    -moz-transform: rotateX(50deg);
+    transform: rotateX(50deg); 
+    font-family: 'Pathway Gothic One', sans-serif;
+}
+
