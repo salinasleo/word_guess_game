@@ -119,6 +119,6 @@ document.onkeyup = function(event) {
     }
  
     function remainingTries() {
-     document.querySelector("#guesses").innerHTML = "Guesses Left: " + (10 - tries);
+     document.querySelector("#guesses").innerHTML = "Guesses Left: " + (10 - tries + correctLetters);
    }
    
